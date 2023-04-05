@@ -8,6 +8,7 @@ import SideBar from './components/SideBar';
 import Home from './components/Home';
 import Contact from './components/Contact';
 import Edit from './components/Edit';
+import ContactLayout from './components/ContactLayout';
 
 const API_URL = `${import.meta.env.VITE_API_URL}`;
 
@@ -55,6 +56,7 @@ function App() {
         <SideBar contacts={filerContacts} />
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/new' element={<ContactLayout />} />
           <Route path='/:id'>
             <Route index element={<Contact contacts={contacts} />} />
             <Route path='edit' element={<Edit />} />

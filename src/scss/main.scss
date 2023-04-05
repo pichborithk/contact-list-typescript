@@ -37,7 +37,27 @@
   }
 
   a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: 900;
+    color: #fff;
+
+    button {
+      color: #000;
+      box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
+      border: none;
+      padding: $base-padding * 0.5 $base-padding * 1.75;
+      font-size: $base-font-size * 1.25;
+      background-color: #fff;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #000;
+        border: 1px solid #fff;
+        color: #fff;
+      }
+    }
   }
 }
 
@@ -62,6 +82,13 @@ main {
     }
   }
 
+  .welcome {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+  }
+
   .contact {
     display: flex;
     flex: 1;
@@ -82,6 +109,37 @@ main {
       p {
         font-size: $font-size-lg;
       }
+    }
+  }
+
+  form {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: $base-padding * 4 $base-padding * 12;
+
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+
+      * {
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        border: none;
+        flex: 1;
+        font-size: $font-size-lg * 0.75;
+        padding: $base-padding $base-padding;
+        border-radius: 10px;
+      }
+    }
+
+    .buttons {
+      align-self: flex-end;
+      width: 50%;
     }
   }
 }
