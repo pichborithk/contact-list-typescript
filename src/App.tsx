@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import './scss/main.scss';
@@ -16,7 +16,7 @@ type Name = {
   name: string;
 };
 
-type ContactsData = {
+type ContactData = {
   email: string;
   phone: string;
   address: AddressData;
@@ -30,7 +30,7 @@ type AddressData = {
 };
 
 function App() {
-  const [contacts, setContacts] = useState<ContactsData[]>([]);
+  const [contacts, setContacts] = useState<ContactData[]>([]);
 
   async function getContacts() {
     try {
@@ -55,7 +55,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/:id'>
-            <Route index element={<Contact />} />
+            <Route index element={<Contact contacts={contacts} />} />
             <Route path='edit' element={<Edit />} />
           </Route>
           <Route path='*' element={<Navigate to='/' />} />
@@ -66,4 +66,4 @@ function App() {
 }
 
 export default App;
-export type { Name };
+export type { ContactData, Name };

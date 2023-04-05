@@ -34,7 +34,7 @@ main {
     border-right: 1px solid #000;
     font-size: $font-size-lg * 0.75;
     padding: $base-padding $base-padding * 2;
-    width: 30%;
+    width: 25%;
 
     a {
       display: block;
@@ -43,6 +43,29 @@ main {
       &:hover {
         background-color: $secondary;
         color: #fff;
+      }
+    }
+  }
+
+  .contact {
+    display: flex;
+    flex: 1;
+    padding: $base-padding * 4;
+    gap: 40px;
+
+    img {
+      border-radius: 20px;
+      box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
+      height: 300px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      p {
+        font-size: $font-size-lg;
       }
     }
   }
