@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 
 import './scss/main.scss';
 
@@ -8,21 +8,21 @@ import SideBar from './components/SideBar';
 import Home from './components/Home';
 import Contact from './components/Contact';
 import Edit from './components/Edit';
-import ContactLayout from './components/ContactLayout';
+import ContactForm from './components/ContactForm';
 
 const API_URL = `${import.meta.env.VITE_API_URL}`;
 
-type Name = {
+type UserData = {
   id: number;
-  name: string;
-};
+} & ContactData;
 
 type ContactData = {
+  name: string;
   email: string;
   phone: string;
   address: AddressData;
   company: { name: string };
-} & Name;
+};
 
 type AddressData = {
   city: string;
@@ -31,8 +31,9 @@ type AddressData = {
 };
 
 function App() {
-  const [contacts, setContacts] = useState<ContactData[]>([]);
-  const [filerContacts, setFilterContacts] = useState<ContactData[]>([]);
+  const [contacts, setContacts] = useState<UserData[]>([]);
+  const [filerContacts, setFilterContacts] = useState<UserData[]>([]);
+  const navigate = useNavigate();
 
   async function getContacts() {
     try {
@@ -49,6 +50,20 @@ function App() {
     getContacts();
   }, []);
 
+  async function addNewContact(data: ContactData) {
+    try {
+      await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      await getContacts();
+    } catch (error) {
+      console.error(error);
+    }
+    navigate('/');
+  }
+
   return (
     <>
       <NavBar setFilterContacts={setFilterContacts} contacts={contacts} />
@@ -56,7 +71,10 @@ function App() {
         <SideBar contacts={filerContacts} />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/new' element={<ContactLayout />} />
+          <Route
+            path='/new'
+            element={<ContactForm onSubmit={addNewContact} />}
+          />
           <Route path='/:id'>
             <Route index element={<Contact contacts={contacts} />} />
             <Route path='edit' element={<Edit />} />
@@ -69,4 +87,4 @@ function App() {
 }
 
 export default App;
-export type { ContactData, Name };
+export type { ContactData, UserData };

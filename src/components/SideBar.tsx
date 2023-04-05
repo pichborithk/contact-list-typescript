@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { Name } from '../App';
+import { UserData } from '../App';
 
 type SideBarProps = {
-  contacts: Name[];
+  contacts: UserData[];
 };
 
 const SideBar = ({ contacts }: SideBarProps) => {
