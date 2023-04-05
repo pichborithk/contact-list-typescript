@@ -29,6 +29,9 @@ const NavBar = ({ setFilterContacts, contacts }: NavBarProps) => {
           });
         }}
       />
+      <Link to='/new'>
+        <button>New</button>
+      </Link>
       <Link to='/'>Contact List</Link>
     </nav>
   );
