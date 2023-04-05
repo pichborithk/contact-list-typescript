@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { ContactData } from '../App';
+import { UserData } from '../App';
 
 type NavBarProps = {
-  contacts: ContactData[];
-  setFilterContacts: Dispatch<SetStateAction<ContactData[]>>;
+  contacts: UserData[];
+  setFilterContacts: Dispatch<SetStateAction<UserData[]>>;
 };
 
 const NavBar = ({ setFilterContacts, contacts }: NavBarProps) => {
