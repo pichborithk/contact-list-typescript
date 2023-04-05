@@ -31,13 +31,14 @@ type AddressData = {
 
 function App() {
   const [contacts, setContacts] = useState<ContactData[]>([]);
+  const [filerContacts, setFilterContacts] = useState<ContactData[]>([]);
 
   async function getContacts() {
     try {
       const response = await fetch(API_URL);
       const result = await response.json();
-      console.log(result);
       setContacts(result);
+      setFilterContacts(result);
     } catch (error) {
       console.error(error);
     }
@@ -49,9 +50,9 @@ function App() {
 
   return (
     <>
-      <NavBar />
+      <NavBar setFilterContacts={setFilterContacts} contacts={contacts} />
       <main>
-        <SideBar contacts={contacts} />
+        <SideBar contacts={filerContacts} />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/:id'>
