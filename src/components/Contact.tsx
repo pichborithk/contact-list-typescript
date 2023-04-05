@@ -8,9 +8,10 @@ type ContactProps = {
 
 const Contact = ({ contacts }: ContactProps) => {
   const { id } = useParams();
-  const [selectedContact] = useMemo<ContactData[]>(() => {
-    return contacts.filter((contact) => contact.id === Number(id));
-  }, [id]);
+
+  const [selectedContact] = contacts.filter(
+    (contact) => contact.id === Number(id)
+  );
 
   if (!selectedContact) return <Navigate to='/' replace />;
 

@@ -9,7 +9,7 @@ import Home from './components/Home';
 import Contact from './components/Contact';
 import Edit from './components/Edit';
 
-const API_URL = `${import.meta.env.VITE_API_URL}/`;
+const API_URL = `${import.meta.env.VITE_API_URL}`;
 
 type Name = {
   id: number;
