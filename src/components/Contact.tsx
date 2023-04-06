@@ -1,9 +1,8 @@
-import { Navigate, useParams } from 'react-router-dom';
-import { ContactData } from '../App';
-import { useMemo } from 'react';
+import { Link, Navigate, useParams } from 'react-router-dom';
+import { UserData } from '../App';
 
 type ContactProps = {
-  contacts: ContactData[];
+  contacts: UserData[];
 };
 
 const Contact = ({ contacts }: ContactProps) => {
@@ -41,6 +40,15 @@ const Contact = ({ contacts }: ContactProps) => {
           <strong>Company: </strong>
           {selectedContact.company.name}
         </p>
+
+        <div className='buttons'>
+          <Link to={`/${id}/edit`}>
+            <button>Edit</button>
+          </Link>
+          <Link to='/'>
+            <button className='delete-btn'>Delete</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

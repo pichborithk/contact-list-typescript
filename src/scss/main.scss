@@ -109,6 +109,36 @@ main {
       p {
         font-size: $font-size-lg;
       }
+
+      .buttons {
+        margin-top: $base-margin * 1.5;
+        a {
+          button {
+            background-color: #fff;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+            font-size: $base-font-size;
+            padding: $base-padding * 0.5 $base-padding;
+            width: 80px;
+            margin-right: 10px;
+            cursor: pointer;
+
+            &:hover {
+              background-color: $primary;
+              color: #fff;
+            }
+          }
+
+          .delete-btn {
+            color: $error;
+
+            &:hover {
+              background-color: $error;
+            }
+          }
+        }
+      }
     }
   }
 
