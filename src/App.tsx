@@ -7,8 +7,8 @@ import NavBar from './components/NavBar';
 import SideBar from './components/SideBar';
 import Home from './components/Home';
 import Contact from './components/Contact';
-import Edit from './components/Edit';
-import ContactForm from './components/ContactForm';
+import EditContact from './components/EditContact';
+import NewContact from './components/NewContact';
 
 const API_URL = `${import.meta.env.VITE_API_URL}`;
 
@@ -85,14 +85,14 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route
             path='/new'
-            element={<ContactForm onSubmit={addNewContact} />}
+            element={<NewContact onSubmit={addNewContact} />}
           />
           <Route path='/:id'>
             <Route
               index
               element={<Contact contacts={contacts} onDelete={deleteContact} />}
             />
-            <Route path='edit' element={<Edit />} />
+            <Route path='edit' element={<EditContact />} />
           </Route>
           <Route path='*' element={<Navigate to='/' />} />
         </Routes>

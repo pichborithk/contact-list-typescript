@@ -1,11 +1,6 @@
 import { useRef } from 'react';
-import { ContactData } from '../App';
 
-type ContactFormProps = {
-  onSubmit: (data: ContactData) => void;
-};
-
-const ContactForm = ({ onSubmit }: ContactFormProps) => {
+const EditContact = () => {
   const firstNameRef = useRef<HTMLInputElement>(null);
   const lastNameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -35,7 +30,7 @@ const ContactForm = ({ onSubmit }: ContactFormProps) => {
       onSubmit={(event) => {
         event.preventDefault();
         const contactData = createContactData();
-        onSubmit(contactData);
+        // onSubmit(contactData);
       }}
     >
       <div>
@@ -67,4 +62,4 @@ const ContactForm = ({ onSubmit }: ContactFormProps) => {
   );
 };
 
-export default ContactForm;
+export default EditContact;
