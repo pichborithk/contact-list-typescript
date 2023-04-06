@@ -3,9 +3,12 @@ import { UserData } from '../App';
 
 type ContactProps = {
   contacts: UserData[];
+  onDelete: (id: number) => void;
 };
 
-const Contact = ({ contacts }: ContactProps) => {
+const API_URL = `${import.meta.env.VITE_API_URL}`;
+
+const Contact = ({ contacts, onDelete }: ContactProps) => {
   const { id } = useParams();
 
   const [selectedContact] = contacts.filter(
@@ -45,9 +48,12 @@ const Contact = ({ contacts }: ContactProps) => {
           <Link to={`/${id}/edit`}>
             <button>Edit</button>
           </Link>
-          <Link to='/'>
-            <button className='delete-btn'>Delete</button>
-          </Link>
+          <button
+            className='delete-btn'
+            onClick={() => onDelete(selectedContact.id)}
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

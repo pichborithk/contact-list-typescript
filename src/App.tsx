@@ -64,6 +64,18 @@ function App() {
     navigate('/');
   }
 
+  async function deleteContact(id: number) {
+    try {
+      await fetch(`${API_URL}/${id}`, {
+        method: 'DELETE',
+      });
+      await getContacts();
+    } catch (error) {
+      console.error(error);
+    }
+    navigate('/');
+  }
+
   return (
     <>
       <NavBar setFilterContacts={setFilterContacts} contacts={contacts} />
@@ -76,7 +88,10 @@ function App() {
             element={<ContactForm onSubmit={addNewContact} />}
           />
           <Route path='/:id'>
-            <Route index element={<Contact contacts={contacts} />} />
+            <Route
+              index
+              element={<Contact contacts={contacts} onDelete={deleteContact} />}
+            />
             <Route path='edit' element={<Edit />} />
           </Route>
           <Route path='*' element={<Navigate to='/' />} />
